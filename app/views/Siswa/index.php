@@ -1,11 +1,19 @@
 <div class="container">
-  <div class="row justify-content-center">
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <a href="<?= BASEURL ?>/Siswa/tambah" class="btn btn-success mb-2">Tambah Siswa</a>
+ 
+  <div class="row">
+    <!-- MENU -->
+    <div class="col-md-3">
       <div class="card card-default">
-      <div class="card-header">Daftar Siswa</div>
+        <div class="card-header"><strong>Menu</strong></div>
+        <div class="card-body">
+          <a href="#" title="">profile</a>
+        </div>
+      </div>
+    </div>
+    <!-- View the Menu -->
+    <div class="col-md-9">
+      <div class="card card-default">
+      <div class="card-header"><strong>Daftar Siswa</strong></div>
         <div class="card-body">
           <ul class="list list-group">
             <?php foreach ($data['siswa'] as $siswa): ?>
@@ -18,6 +26,8 @@
           </ul>
         </div>
       </div>
+      <a href="<?= BASEURL ?>/Siswa/tambah" class="btn btn-success float-right mt-2">Tambah Siswa</a>
     </div>
   </div>
+
 </div>
