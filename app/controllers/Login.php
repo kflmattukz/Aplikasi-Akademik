@@ -14,7 +14,7 @@ class Login extends Controller
 
     $data = $this->model('User_model')->login($_POST);
     if (!empty($data) ){
-      $_SESSION['userlogin'] = 'loged in';
+      $_SESSION['userlogin'] = $data['roles'];
       $_SESSION['id'] = $data['id'];
       $_SESSION['user'] = $data['username'];
       Flasher::setFlash('Behasil' , 'Login' , 'success');

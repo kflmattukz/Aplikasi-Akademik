@@ -14,7 +14,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <?php if (isset($_SESSION['userlogin'])): ?>
+  <?php if (isset($_SESSION['userlogin']) AND $_SESSION['userlogin'] === 'admin'): ?>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <?php echo ($data['active'] === 'Home') ? 'active' : ''; ?>">
         <a class="nav-link" href="<?= BASEURL ?>/Home">Home <span class="sr-only">(current)</span></a>

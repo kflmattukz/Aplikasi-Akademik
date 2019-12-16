@@ -23,7 +23,7 @@ class User_model extends Database
 
   public function logout($userId)
   {
-    $query = "UPDATE " . $this->table . " SET last_login=NOW() WHERE id=:id";
+    $query = "UPDATE " . $this->table . " SET updated_at=NOW() WHERE id=:id";
     $this->db->query($query);
     $this->db->bind('id' , $userId);
     $this->db->execute();

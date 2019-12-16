@@ -18,7 +18,7 @@ class Flasher {
 							  icon: '" . $_SESSION['flash']['type'] . "',
 							  title: '" . $_SESSION['flash']['message'] . " " . $_SESSION['flash']['action'] . " !',
 							  showConfirmButton: false,
-							  timer: 2000
+							  timer: 1700
 							});</script>";
 
 			unset($_SESSION['flash']);
