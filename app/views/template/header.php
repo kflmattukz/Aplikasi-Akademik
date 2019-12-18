@@ -1,29 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>App Akademik</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><?= $data['title'] ?></title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" href="<?= BASEURL ?>/css/main.css">
 </head>
 <body>
-<!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">App Akademik</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-    <div class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-primary btn-sm my-2 my-sm-0 mr-1" type="submit">Register</button>
-      <a href="<?= BASEURL ?>/Auth/login" class="btn btn-outline-success btn-sm my-2 my-sm-0">Login</a>
+<!-- NAV Start -->
+<div class="ui blue inverted menu">
+<div class="header item">
+  App Akademik
+
+<?php if(!isset($_SESSION['login'])): ?>
+  
+  </div>
+    <a class="item"><i class="home icon"></i> Home</a>
+    <a class="item"><i class="laptop icon"></i> Dashboard</a>
+    <a class="item"><i class="user icon"></i> Profile</a>
+    <div class="right menu">
+      <a href="" class="item"><i class="user circle icon"></i> Register</a>
+      <a href="<?= BASEURL ?>/Auth/userlogin" class="item"><i class="sign-in icon"></i> Login</a>
     </div>
   </div>
-</nav>
-<!-- Navbar end -->
+
+<?php elseif(isset($_SESSION['login']) AND $_SESSION['login']['active'] === '1'): ?>
+
+  </div>
+    <a class="item"><i class="home icon"></i> Home</a>
+    <a href="<?= BASEURL ?>/Admin/dashboard" class="item"><i class="laptop icon"></i> Dashboard</a>
+    <a class="item"><i class="user icon"></i> Profile</a>
+    <div class="right menu">
+      <a href="" class="item"><i class="user circle icon"></i> <?= $_SESSION['login']['user'] ?></a>
+      <a href="<?= BASEURL ?>/Auth/logout/<?= $_SESSION['login']['id'] ?>" class="item"><i class="sign-in icon"></i> Logout</a>
+    </div>
+  </div>
+
+<?php else: ?>
+
+  </div>
+    <a class="item"><i class="home icon"></i> Home</a>
+    <a class="item"><i class="laptop icon"></i> Dashboard</a>
+    <a class="item"><i class="user icon"></i> Profile</a>
+    <div class="right menu">
+      <a href="" class="item">Your user not Active &ThinSpace;<i class="user circle icon"></i> <?= $_SESSION['login']['user'] ?></a>
+      <a href="<?= BASEURL ?>/Auth/logout/<?= $_SESSION['login']['id'] ?>" class="item"><i class="sign-in icon"></i> Logout</a>
+    </div>
+  </div>
+
+<?php endif; ?>
+<!-- NAV End -->
