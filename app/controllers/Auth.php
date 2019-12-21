@@ -9,7 +9,7 @@ class Auth extends Controller
       $_SESSION['login'] = [
         'id' => $data['id'],
         'user' => $data['firstName'],
-        'active' =>$data['active']
+        'activated' =>$data['activated']
       ];
 
       Flasher::setFlash('Login Success' , 'Welcome ' . $_SESSION['login']['user'] , 'success');

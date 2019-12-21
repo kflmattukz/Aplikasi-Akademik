@@ -61,5 +61,13 @@ class Users_model extends Database
 		var_dump($data);
 	}
 
+	public function getAllUsers()
+	{
+		$query = "SELECT * FROM " . $this->table;
+		$this->db->query($query);
+		$this->db->execute();
+		return $this->db->resultSet();
+	}
+
 
 }

@@ -27,7 +27,7 @@
     </div>
   </div>
 
-<?php elseif(isset($_SESSION['login']) AND $_SESSION['login']['active'] === '1'): ?>
+<?php elseif(isset($_SESSION['login']) AND $_SESSION['login']['activated'] === '1'): ?>
 
   </div>
     <a class="item"><i class="home icon"></i> Home</a>

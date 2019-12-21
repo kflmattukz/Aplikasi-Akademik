@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL' , 'http://localhost/akademik/public');
+define('BASEURL' , 'http://localhost/akademik');
 
 define('USER' , 'root');
 define('PASS' , '');
