@@ -18,7 +18,7 @@
 <?php if(!isset($_SESSION['login'])): ?>
   
   </div>
-    <a class="item"><i class="home icon"></i> Home</a>
+    <a  href="<?= BASEURL ?>/Home" class="item"><i class="home icon"></i> Home</a>
     <a class="item"><i class="laptop icon"></i> Dashboard</a>
     <a class="item"><i class="user icon"></i> Profile</a>
     <div class="right menu">

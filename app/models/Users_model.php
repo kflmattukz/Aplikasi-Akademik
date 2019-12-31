@@ -69,5 +69,13 @@ class Users_model extends Database
 		return $this->db->resultSet();
 	}
 
+	public function delAdminById($adminId)
+	{
+		$query = "DELETE FROM " . $this->table . " WHERE id=:id ";
+		$this->db->query($query);
+		$this->db->bind('id' , $adminId);
+		$this->db->execute();
+		return $this->db->affectedRow();
+	}
 
 }

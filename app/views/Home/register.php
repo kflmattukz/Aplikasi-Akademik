@@ -116,13 +116,13 @@
         <label for="gender">Select your gender:</label>
         <div class="field">
           <div class="ui radio checkbox">
-            <input type="radio" value="male" name="gender" checked="" tabindex="0" class="hidden">
+            <input type="radio" value="L" name="gender" checked="" tabindex="0" class="hidden">
             <label><i class="ui mars icon"></i> Males</label>
           </div>
         </div>
         <div class="field">
           <div class="ui radio checkbox">
-            <input type="radio" value="female" name="gender" tabindex="0" class="hidden">
+            <input type="radio" value="P" name="gender" tabindex="0" class="hidden">
             <label><i class="ui venus icon"></i> Females</label>
           </div>
         </div>

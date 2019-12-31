@@ -17,4 +17,17 @@ class Admin extends Controller
   	$this->view('Dashbiard/daftarAdmin' , $data);
   }
 
+  public function delete($adminId)
+  {
+    if ($this->model('Users_model')->delAdminById($adminId)) {
+      Flasher::setFlash('Delete Success' , '!' , 'success');
+      header('Location: ' . BASEURL . '/Admin/dashboard');
+      exit;
+    } else {
+      Flasher::setFlash('Delete Failed' , '!' , 'error');
+      header('Location: ' . BASEURL . '/Admin/dashboard');
+      exit;
+    }
+  }
+
 }

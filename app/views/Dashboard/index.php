@@ -60,7 +60,7 @@
                 <td data-label="Username"><?= $admins['username'] ?></td>
                 <td data-label="Email"><?= $admins['email'] ?></td>
                 <td data-label="Gender"><?= $admins['gender'] ?></td>
-                <td data-label="Active"><?php echo ($admins['activated'] === '1') ? 'Actived' : 'Not Activated'; ?></td>
+                <td data-label="Active"><?php echo ($admins['active'] === '1') ? 'Actived' : 'Not Activated'; ?></td>
                 <td data-label="Last Login"><?= $admins['updated_at'] ?></td>
                 <td data-label="Action">
                   <a href="<?= BASEURL ?>/Admin/edit/<?= $admins['id'] ?>" class="ui primary mini button" title="edit action"><i class="ui edit icon"></i>Edit</a>
@@ -70,10 +70,8 @@
             <?php endforeach; ?>
           </tbody>
         </table>
-
-
-      </div>
-
+        <button class="ui green button formAdd"><span><i class="ui add icon"></i></span> Add Admin</button>
+      </div>   
     </div>
 
   </div>
@@ -84,6 +82,135 @@
   crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="<?= BASEURL ?>/js/main.js"></script>    
+<script src="<?= BASEURL; ?>/js/script.js"></script>
+
+
+<script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            firstName: {
+              identifier :'firstName',
+              rules : [
+                {
+                  type    : 'empty',
+                  prompt  : 'Please enter your first name'
+                }
+              ]
+            },
+            lastName: {
+              identifier :'lastName',
+              rules : [
+                {
+                  type    : 'empty',
+                  prompt  : 'Please enter your last name'
+                }
+              ]
+            },
+            email: {
+              identifier  : 'email',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your email'
+                },
+                {
+                  type   : 'email',
+                  prompt : 'Please enter a valid email'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                },
+                {
+                  type   : 'length[6]',
+                  prompt : 'Your password must be at least 6 characters'
+                }
+              ]
+            }
+          }
+
+        })
+      ;
+    })
+  ;
+  </script>
+
+<div class="ui tiny modal">
+  <i class="icon close"></i>
+  <div class="header">Add Admin</div>
+  <div class="content">
+  <form action="<?= BASEURL ?>/Auth/register" class="ui large form" method="post">
+      <div class="ui stacked">
+        <div class="two fields">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="pencil icon"></i>
+              <input type="text" name="firstName" placeholder="First Name">
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="pencil icon"></i>
+              <input type="text" name="lastName" placeholder="Last Name">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="username">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="envelope icon"></i>
+            <input type="email" name="email" placeholder="Email">
+          </div>
+        </div>
+
+        <div class="inline fields">
+        <label for="gender">Select your gender:</label>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" value="L" name="gender" checked="" tabindex="0" class="hidden">
+            <label><i class="ui mars icon"></i> Males</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" value="P" name="gender" tabindex="0" class="hidden">
+            <label><i class="ui venus icon"></i> Females</label>
+          </div>
+        </div>
+      </div>
+        <button type="submit" class="ui primary submit button">Register</button>
+      </div>
+      <div class="ui error message"></div>
+    </form>
+  </div>
+</div>
+
+<div class="ui mini modal">
+  <i class="icon close"></i>
+</div>
+
+<?php 
+  Flasher::flash();
+?>
+
 </body>
 </html>
